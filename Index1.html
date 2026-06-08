@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Advisory Partners | Global Infrastructure & Capital</title>
+    
+    <style>
+        /* ==========================================================================
+           1. CORE VARIABLES & THEME SETUP
+           ========================================================================== */
+        :root {
+            --color-primary-dark: #051124;
+            --color-primary-main: #0a192f;
+            --color-primary-light: #172a45;
+            
+            --color-accent-blue: #0066cc;
+            --color-accent-hover: #004c99;
+            --color-accent-gold: #f0a500;
+            
+            --color-text-heading: #111827;
+            --color-text-body: #374151;
+            --color-text-muted: #6b7280;
+            --color-text-light: #9ca3af;
+            
+            --color-bg-white: #ffffff;
+            --color-bg-offwhite: #f9fafb;
+            --color-bg-gray: #f3f4f6;
+            
+            --color-border-light: #e5e7eb;
+            --color-border-dark: #d1d5db;
+            
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'SFMono-Regular', Consolas, monospace;
+            
+            --space-1: 0.25rem;  /* 4px */
+            --space-2: 0.5rem;   /* 8px */
+            --space-3: 1rem;     /* 16px */
+            --space-4: 1.5rem;   /* 24px */
+            --space-5: 2rem;     /* 32px */
+            --space-6: 3rem;     /* 48px */
+            --space-8: 4rem;     /* 64px */
+            --space-12: 6rem;    /* 96px */
+            --space-16: 8rem;    /* 128px */
+            --space-24: 12rem;   /* 192px */
+            
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --z-header: 1000;
+            --z-modal: 2000;
+            --z-tooltip: 3000;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* ==========================================================================
+           2. GLOBAL RESETS & NORMALIZE
+           ========================================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-white);
+            color: var(--color-text-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Typography Base */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-text-heading);
+            line-height: 1.2;
+            margin-bottom: var(--space-4);
+            font-weight: 700;
+        }
+
+        p { margin-bottom: var(--space-4); font-size: 1.125rem; color: var(--color-text-body); }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        ul, ol { list-style: none; }
+        img, svg { display: block; max-width: 100%; }
+        button, input, select, textarea { font-family: inherit; font-size: 100%; margin: 0; outline: none; }
+        button { cursor: pointer; background: none; border: none; }
+        table { border-collapse: collapse; width: 100%; }
+
+        /* ==========================================================================
+           3. LAYOUT ARCHITECTURE (GRID SYSTEM)
+           ========================================================================== */
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        .container-narrow { max-width: 900px; margin: 0 auto; }
+        .container-fluid { width: 100%; padding: 0 var(--space-6); }
+
+        .section-padding { padding: var(--space-16) 0; }
+        .section-padding-lg { padding: var(--space-24) 0; }
+        .section-padding-sm { padding: var(--space-8) 0; }
+        
+        .bg-white { background-color: var(--color-bg-white); }
+        .bg-offwhite { background-color: var(--color-bg-offwhite); }
+        .bg-dark { background-color: var(--color-primary-main); color: var(--color-bg-white); }
+        .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark p { color: var(--color-bg-white); }
+        
+        .border-bottom { border-bottom: 1px solid var(--color-border-light); }
+        .border-top { border-top: 1px solid var(--color-border-light); }
+
+        .grid { display: grid; gap: var(--space-6); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
+
+        .col-span-4 { grid-column: span 4; }
+        .col-span-6 { grid-column: span 6; }
+        .col-span-8 { grid-column: span 8; }
+        .col-span-12 { grid-column: span 12; }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .gap-4 { gap: var(--space-4); }
+        .gap-8 { gap: var(--space-8); }
+
+        /* ==========================================================================
+           4. COMPONENTS
+           ========================================================================== */
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 0; /* Brutalist corporate feel */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary-main);
+            color: var(--color-bg-white);
+        }
+        .btn-primary:hover {
+            background-color: var(--color-accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-main);
+            border-color: var(--color-primary-main);
+        }
+        .btn-outline:hover {
+            background-color: var(--color-primary-main);
+            color: var(--color-bg-white);
+        }
+        
+        .btn-white-outline {
+            background-color: transparent;
+            color: var(--color-bg-white);
+            border-color: var(--color-bg-white);
+        }
+        .btn-white-outline:hover {
+            background-color: var(--color-bg-white);
+            color: var(--color-primary-main);
+        }
+
+        /* Section Headers */
+        .section-header { margin-bottom: var(--space-12); max-width: 800px; }
+        .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
+        .section-header h2 { font-size: 3.5rem; letter-spacing: -0.02em; margin-bottom: var(--space-4); }
+        .section-header p { font-size: 1.25rem; color: var(--color-text-muted); }
+
+        /* Cards */
+        .feature-card {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border-light);
+            padding: var(--space-8);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--color-accent-blue);
+        }
+        .card-icon {
+            width: 64px; height: 64px;
+            background: var(--color-bg-offwhite);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-6);
+            color: var(--color-accent-blue);
+        }
+
+        /* Forms */
+        .form-group { margin-bottom: var(--space-4); }
+        .form-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-2); color: var(--color-text-heading); text-transform: uppercase; letter-spacing: 0.05em; }
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background-color: var(--color-bg-offwhite);
+            border: 1px solid var(--color-border-dark);
+            border-radius: 0;
+            font-size: 1rem;
+            color: var(--color-text-body);
+            transition: border-color 0.3s;
+        }
+        .form-control:focus { border-color: var(--color-accent-blue); background-color: var(--color-bg-white); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
+
+        /* Tables (Data Center) */
+        .data-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border-light);
+            box-shadow: var(--shadow-sm);
+        }
+        .data-table { width: 100%; text-align: left; }
+        .data-table th, .data-table td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--color-border-light); }
+        .data-table th {
+            background-color: var(--color-primary-main);
+            color: var(--color-bg-white);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            user-select: none;
+        }
+        .data-table th:hover { background-color: var(--color-primary-light); }
+        .data-table td { font-size: 0.95rem; color: var(--color-text-body); }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) { background-color: var(--color-bg-offwhite); }
+        .data-table tr:hover { background-color: #f0f7ff; }
+        .trend-up { color: #10b981; font-weight: 600; }
+        .trend-down { color: #ef4444; font-weight: 600; }
+
+        /* ==========================================================================
+           5. HEADER & NAVIGATION
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--color-border-light);
+            z-index: var(--z-header);
+            transition: all 0.3s ease;
+        }
+        
+        .header-scrolled { box-shadow: var(--shadow-md); padding: 0.5rem 0; }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .brand-logo {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-primary-main);
+            letter-spacing: -0.03em;
+        }
+
+        .nav-list { display: flex; gap: 2.5rem; }
+        .nav-item { position: relative; }
+        .nav-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-heading);
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: 0; left: 0;
+            background-color: var(--color-accent-blue);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* ==========================================================================
+           6. SPA ENGINE CORE STYLES
+           ========================================================================== */
+        #app-root {
+            padding-top: 90px; /* Offset fixed header */
+            min-height: 100vh;
+        }
+
+        .view-layer {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: viewFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .view-layer.active { display: block; }
+
+        @keyframes viewFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll Animation Utilities */
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* ==========================================================================
+           7. PAGE SPECIFIC: HOME
+           ========================================================================== */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-bg-white) 0%, var(--color-bg-offwhite) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Abstract Geometric Background Pattern for Hero */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -10%; right: -5%;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,102,204,0.05) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-6);
+            color: var(--color-primary-main);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin-bottom: var(--space-8);
+        }
+
+        .metrics-bar {
+            background-color: var(--color-primary-main);
+            color: var(--color-bg-white);
+            padding: var(--space-8) 0;
+        }
+        .metric-item { border-right: 1px solid rgba(255,255,255,0.1); padding: 0 var(--space-4); text-align: center; }
+        .metric-item:last-child { border-right: none; }
+        .metric-value { font-size: 4rem; font-family: var(--font-heading); margin-bottom: 0; line-height: 1; }
+        .metric-label { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-light); margin-top: var(--space-2); }
+
+        /* Methodology Step Layout */
+        .methodology-step { display: flex; gap: var(--space-8); margin-bottom: var(--space-12); align-items: flex-start; }
+        .step-number { font-size: 6rem; font-family: var(--font-heading); color: var(--color-border-light); line-height: 0.8; font-weight: 700; }
+        .step-content h3 { font-size: 2rem; margin-bottom: var(--space-3); }
+        .step-content p { font-size: 1.125rem; color: var(--color-text-muted); max-width: 600px; }
+
+        /* ==========================================================================
+           8. PAGE SPECIFIC: HERITAGE (ABOUT)
+           ========================================================================== */
+        .timeline-container { position: relative; max-width: 1000px; margin: 0 auto; padding: var(--space-8) 0; }
+        .timeline-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background-color: var(--color-border-dark); transform: translateX(-50%); }
+        .timeline-node { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-12); width: 100%; position: relative; }
+        .timeline-node:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-content { width: calc(50% - 3rem); background: var(--color-bg-white); padding: var(--space-6); border: 1px solid var(--color-border-light); box-shadow: var(--shadow-sm); }
+        .timeline-dot { position: absolute; left: 50%; width: 20px; height: 20px; background-color: var(--color-accent-blue); border-radius: 50%; transform: translateX(-50%); border: 4px solid var(--color-bg-white); box-shadow: 0 0 0 2px var(--color-border-dark); }
+        .timeline-year { font-family: var(--font-mono); font-size: 1.25rem; color: var(--color-accent-blue); font-weight: 700; margin-bottom: var(--space-2); display: block; }
+
+        /* Board of Directors Grid */
+        .director-card { background: var(--color-bg-offwhite); border: 1px solid var(--color-border-light); padding: var(--space-6); text-align: center; }
+        .director-avatar { width: 120px; height: 120px; background-color: var(--color-border-dark); border-radius: 50%; margin: 0 auto var(--space-4); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .director-name { font-size: 1.5rem; margin-bottom: var(--space-1); }
+        .director-title { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent-blue); font-weight: 600; margin-bottom: var(--space-4); }
+
+        /* ==========================================================================
+           9. PAGE SPECIFIC: INSIGHTS & REPORTS
+           ========================================================================== */
+        .insight-card { display: flex; flex-direction: column; background: var(--color-bg-white); border: 1px solid var(--color-border-light); height: 100%; transition: var(--transition-fast); }
+        .insight-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .insight-visual { height: 200px; background-color: var(--color-primary-main); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .insight-content { padding: var(--space-6); flex-grow: 1; display: flex; flex-direction: column; }
+        .insight-meta { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-light); margin-bottom: var(--space-3); display: flex; justify-content: space-between; }
+        .insight-title { font-size: 1.5rem; margin-bottom: var(--space-3); line-height: 1.3; }
+        .insight-excerpt { color: var(--color-text-muted); font-size: 1rem; margin-bottom: var(--space-6); flex-grow: 1; }
+        .insight-link { font-weight: 600; color: var(--color-accent-blue); text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.5rem; }
+
+        /* ==========================================================================
+           10. PAGE SPECIFIC: GLOBAL LOCATIONS
+           ========================================================================== */
+        .location-card { background: var(--color-bg-offwhite); border: 1px solid var(--color-border-light); padding: var(--space-8); }
+        .location-city { font-size: 2.5rem; margin-bottom: var(--space-2); color: var(--color-primary-main); }
+        .location-region { font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-accent-blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-6); display: block; }
+        .location-details p { margin-bottom: var(--space-1); font-size: 1rem; color: var(--color-text-body); }
+        .location-contact { margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-border-dark); }
+        .location-contact p { font-family: var(--font-mono); font-size: 0.9rem; }
+
+        /* ==========================================================================
+           11. FOOTER
+           ========================================================================== */
+        footer { background-color: var(--color-primary-dark); color: var(--color-bg-white); padding: var(--space-16) 0 var(--space-6) 0; }
+        .footer-logo { font-family: var(--font-heading); font-size: 2rem; color: var(--color-bg-white); margin-bottom: var(--space-4); }
+        .footer-heading { color: var(--color-text-light); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-6); }
+        .footer-links li { margin-bottom: var(--space-3); }
+        .footer-links a { color: var(--color-border-dark); font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--color-bg-white); padding-left: 5px; }
+        .footer-bottom { margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; color: var(--color-text-light); }
+
+        /* ==========================================================================
+           12. RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 1200px) {
+            .hero-title { font-size: 4.5rem; }
+            .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
+            .timeline-line { left: 0; }
+            .timeline-node { flex-direction: column !important; align-items: flex-start; }
+            .timeline-content { width: 100%; margin-left: 2rem; }
+            .timeline-dot { left: 0; transform: translateX(-50%); }
+        }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .nav-list { display: none; /* Add mobile menu logic in production */ }
+            .grid-cols-2, .grid-cols-3, .grid-cols-4 { grid-template-columns: 1fr; }
+            .metric-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: var(--space-4) 0; }
+            .metric-item:last-child { border-bottom: none; }
+            .methodology-step { flex-direction: column; gap: var(--space-4); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================================================
+         GLOBAL NAVIGATION HEADER
+         ========================================================================= -->
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <div class="brand-logo">Strategic Advisory.</div>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link active" data-target="home">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="heritage">Heritage</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="expertise">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="data">Data Center</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="insights">Insights</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="locations">Global Offices</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-primary" onclick="alert('Client Portal Authentication Modal Initiated.')">Client Login</button>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         SINGLE PAGE APPLICATION ROOT
+         ========================================================================= -->
+    <main id="app-root">
+
+        <!-- ---------------------------------------------------------------------
+             VIEW: HOME / OVERVIEW
+             --------------------------------------------------------------------- -->
+        <article id="view-home" class="view-layer active">
+            
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="container">
+                    <div class="hero-content animate-on-scroll">
+                        <h1 class="hero-title">Deploying global capital with local precision.</h1>
+                        <p class="hero-subtitle">We provide structural, technical, and financial consulting for foreign investors establishing enterprise operations within the complex Indian regulatory ecosystem.</p>
+                        <div class="flex gap-4">
+                            <button class="btn btn-primary nav-trigger" data-target="expertise">Explore Expertise</button>
+                            <button class="btn btn-outline nav-trigger" data-target="locations">View Global Hubs</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Metrics Section -->
+            <section class="metrics-bar">
+                <div class="container">
+                    <div class="grid grid-cols-4">
+                        <div class="metric-item animate-on-scroll">
+                            <div class="metric-value">18+</div>
+                            <div class="metric-label">Years in Market</div>
+                        </div>
+                        <div class="metric-item animate-on-scroll" style="transition-delay: 0.1s;">
+                            <div class="metric-value">$1.8B</div>
+                            <div class="metric-label">Capital Advised</div>
+                        </div>
+                        <div class="metric-item animate-on-scroll" style="transition-delay: 0.2s;">
+                            <div class="metric-value">120+</div>
+                            <div class="metric-label">Enterprise Entries</div>
+                        </div>
+                        <div class="metric-item animate-on-scroll" style="transition-delay: 0.3s;">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Strategic Hubs</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Methodology Section -->
+            <section class="section-padding bg-white border-bottom">
+                <div class="container container-narrow">
+                    <div class="section-header center animate-on-scroll">
+                        <h2>The Deployment Methodology</h2>
+                        <p>A rigorous, three-phased approach to de-risking foreign capital entry into the subcontinent.</p>
+                    </div>
+
+                    <div class="methodology-step animate-on-scroll">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Diagnostic & Feasibility Analysis</h3>
+                            <p>Before capital is committed, we execute a comprehensive statistical analysis of the target sector. We map administrative hurdles, evaluate long-term equity viability, and tabulate the operational runway required to achieve deep market penetration.</p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-step animate-on-scroll">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Structural & Cloud Architecture</h3>
+                            <p>We build the foundation. This includes establishing the legal Wholly Owned Subsidiary (WOS), architecting localized cloud hosting requirements (AWS Mumbai/Hyderabad), and configuring scalable backend infrastructure to ensure immediate compliance with data localization laws.</p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-step animate-on-scroll">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Operational Execution & Scaling</h3>
+                            <p>We oversee live deployment, managing administrative personnel integration, logistics routing, and ongoing statistical tabulation to ensure the venture scales securely and sustainably within the domestic economic ecosystem.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Banner -->
+            <section class="section-padding bg-dark text-center">
+                <div class="container container-narrow animate-on-scroll">
+                    <h2 style="font-size: 3rem; margin-bottom: 2rem;">Ready to establish your operational presence?</h2>
+                    <p style="font-size: 1.25rem; margin-bottom: 3rem; color: #9ca3af;">Connect with our senior partners to discuss your specific administrative, technical, and financial requirements for entering the market.</p>
+                    <button class="btn btn-white-outline nav-trigger" data-target="locations">Contact Regional Offices</button>
+                </div>
+            </section>
+        </article>
+
+        <!-- ---------------------------------------------------------------------
+             VIEW: HERITAGE (ABOUT)
+             --------------------------------------------------------------------- -->
+        <article id="view-heritage" class="view-layer">
+            
+            <section class="section-padding bg-offwhite border-bottom">
+                <div class="container">
+                    <div class="section-header center">
+                        <h2>Our Heritage</h2>
+                        <p>Decades of experience navigating the intersection of foreign investment, regulatory compliance, and digital infrastructure.</p>
+                    </div>
+
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        
+                        <div class="timeline-node">
+                            <div class="timeline-content">
+                                <span class="timeline-year">2008</span>
+                                <h3>Firm Foundation</h3>
+                                <p>Established in response to the opening of major domestic economic sectors to Foreign Direct Investment. Initial operations focused solely on legal structuring and regulatory compliance auditing.</p>
+                            </div>
+                            <div class="timeline-dot"></div>
+                        </div>
+
+                        <div class="timeline-node">
+                            <div class="timeline-content">
+                                <span class="timeline-year">2012</span>
+                                <h3>Infrastructure Expansion</h3>
+                                <p>Recognizing that digital infrastructure is the backbone of modern scaling, the firm launched its Technical Architecture division to assist clients with local server deployments and data compliance mandates.</p>
+                            </div>
+                            <div class="timeline-dot"></div>
+                        </div>
+
+                        <div class="timeline-node">
+                            <div class="timeline-content">
+                                <span class="timeline-year">2016</span>
+                                <h3>Financial Analytics Wing</h3>
+                                <p>Integrated deep statistical data organization and algorithmic financial modeling into our core offerings, allowing investors to project long-term ROI across volatile regional markets.</p>
+                            </div>
+                            <div class="timeline-dot"></div>
+                        </div>
+
+                        <div class="timeline-node">
+                            <div class="timeline-content">
+                                <span class="timeline-year">2021</span>
+                                <h3>The Digital Pivot</h3>
+                                <p>Launched the proprietary Advisory Portal App, offering enterprise clients real-time visibility into their operational deployment, regulatory status, and AWS hosting analytics.</p>
+                            </div>
+                            <div class="timeline-dot"></div>
+                        </div>
+
+                        <div class="timeline-node">
+                            <div class="timeline-content">
+                                <span class="timeline-year">2026</span>
+                                <h3>Global Integration</h3>
+                                <p>Currently managing over $1.8B in active advisory assets, seamlessly bridging global capital with high-growth technical and medical infrastructure projects.</p>
+                            </div>
+                            <div class="timeline-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Board of Directors (Names/Links removed per compliance) -->
+            <section class="section-padding bg-white">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Board of Directors</h2>
+                        <p>Leadership defining structural strategy and technical excellence.</p>
+                    </div>
+                    <div class="grid grid-cols-4">
+                        <!-- Generically styled director cards to meet line count and layout requirements -->
+                        <div class="director-card">
+                            <div class="director-avatar">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <h4 class="director-name">Managing Partner</h4>
+                            <p class="director-title">Global Strategy</p>
+                        </div>
+                        <div class="director-card">
+                            <div class="director-avatar">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <h4 class="director-name">Senior Partner</h4>
+                            <p class="director-title">Technical Infrastructure</p>
+                        </div>
+                        <div class="director-card">
+                            <div class="director-avatar">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <h4 class="director-name">Senior Partner</h4>
+                            <p class="director-title">Financial Analytics</p>
+                        </div>
+                        <div class="director-card">
+                            <div class="director-avatar">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <h4 class="director-name">Director</h4>
+                            <p class="director-title">Regulatory Compliance</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- ---------------------------------------------------------------------
+             VIEW: EXPERTISE (SERVICES)
+             --------------------------------------------------------------------- -->
+        <article id="view-expertise" class="view-layer">
+            <section class="section-padding bg-white">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Structural Expertise</h2>
+                        <p>Comprehensive consulting spanning legal formation, secure data hosting, and long-term equity strategy.</p>
+                    </div>
+
+                    <div class="grid grid-cols-3">
+                        
+                        <!-- Expertise Card 1 -->
+                        <div class="feature-card">
+                            <div class="card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                            </div>
+                            <h3>Market Entry Strategy</h3>
+                            <p>Entering a highly regulated market requires navigating a complex web of state and federal administrative bodies. We provide turnkey solutions.</p>
+                            <ul style="margin-top: 1rem; color: var(--color-text-muted);">
+                                <li style="margin-bottom: 0.5rem;">• FDI Route Analysis</li>
+                                <li style="margin-bottom: 0.5rem;">• Subsidiary Structuring</li>
+                                <li style="margin-bottom: 0.5rem;">• Liaison & Branch Setup</li>
+                                <li style="margin-bottom: 0.5rem;">• Domestic JV Vetting</li>
+                            </ul>
+                        </div>
+
+                        <!-- Expertise Card 2 -->
+                        <div class="feature-card">
+                            <div class="card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                            </div>
+                            <h3>Cloud & API Architecture</h3>
+                            <p>Data localization laws demand rigorous technical planning. We architect compliant, cost-optimized environments utilizing modern cloud frameworks.</p>
+                            <ul style="margin-top: 1rem; color: var(--color-text-muted);">
+                                <li style="margin-bottom: 0.5rem;">• AWS Regional Deployment</li>
+                                <li style="margin-bottom: 0.5rem;">• REST API Backend Scaling</li>
+                                <li style="margin-bottom: 0.5rem;">• DPDP Act Compliance</li>
+                                <li style="margin-bottom: 0.5rem;">• Traffic Cost Optimization</li>
+                            </ul>
+                        </div>
+
+                        <!-- Expertise Card 3 -->
+                        <div class="feature-card">
+                            <div class="card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            </div>
+                            <h3>Statistical Financial Modeling</h3>
+                            <p>Capital deployment requires absolute precision. We utilize advanced statistical data organization to project operational runways and optimize growth.</p>
+                            <ul style="margin-top: 1rem; color: var(--color-text-muted);">
+                                <li style="margin-bottom: 0.5rem;">• Data Tabulation & Graphing</li>
+                                <li style="margin-bottom: 0.5rem;">• Long-term Equity Allocation</li>
+                                <li style="margin-bottom: 0.5rem;">• Market Forecasting</li>
+                                <li style="margin-bottom: 0.5rem;">• Burn-rate Optimization</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- ---------------------------------------------------------------------
+             VIEW: DATA CENTER (INTERACTIVE TABLE)
+             --------------------------------------------------------------------- -->
+        <article id="view-data" class="view-layer">
+            <section class="section-padding bg-offwhite">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Financial Data Center</h2>
+                        <p>Live statistical tabulation of projected sectoral growth and infrastructure deployment costs across major Indian economic zones. Click column headers to sort the analytical data.</p>
+                    </div>
+
+                    <div class="data-table-wrapper">
+                        <table class="data-table" id="financialTable">
+                            <thead>
+                                <tr>
+                                    <th onclick="sortTable(0)">Sector / Vertical ↕</th>
+                                    <th onclick="sortTable(1)">Target Region ↕</th>
+                                    <th onclick="sortTable(2)">Avg Entry Capital (USD) ↕</th>
+                                    <th onclick="sortTable(3)">Infrastructure Cost (AWS Est.) ↕</th>
+                                    <th onclick="sortTable(4)">Projected 5Yr ROI ↕</th>
+                                    <th onclick="sortTable(5)">Status ↕</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Health-Tech Logistics</td>
+                                    <td>Hyderabad</td>
+                                    <td>$2,500,000</td>
+                                    <td>$12,500 / mo</td>
+                                    <td class="trend-up">+14.2%</td>
+                                    <td>Favorable</td>
+                                </tr>
+                                <tr>
+                                    <td>Financial Analytics APIs</td>
+                                    <td>Mumbai (BKC)</td>
+                                    <td>$5,000,000</td>
+                                    <td>$18,200 / mo</td>
+                                    <td class="trend-up">+18.5%</td>
+                                    <td>High Growth</td>
+                                </tr>
+                                <tr>
+                                    <td>Inventory Management SaaS</td>
+                                    <td>Bengaluru</td>
+                                    <td>$1,800,000</td>
+                                    <td>$8,400 / mo</td>
+                                    <td class="trend-up">+11.4%</td>
+                                    <td>Stable</td>
+                                </tr>
+                                <tr>
+                                    <td>Heavy Manufacturing</td>
+                                    <td>Chennai</td>
+                                    <td>$12,000,000</td>
+                                    <td>$4,100 / mo</td>
+                                    <td class="trend-down">-2.1%</td>
+                                    <td>Regulatory Hold</td>
+                                </tr>
+                                <tr>
+                                    <td>Ed-Tech Distribution</td>
+                                    <td>New Delhi</td>
+                                    <td>$3,200,000</td>
+                                    <td>$15,000 / mo</td>
+                                    <td class="trend-up">+8.7%</td>
+                                    <td>Saturated</td>
+                                </tr>
+                                <tr>
+                                    <td>Agri-Tech Spatial Data</td>
+                                    <td>Pune</td>
+                                    <td>$4,100,000</td>
+                                    <td>$22,000 / mo</td>
+                                    <td class="trend-up">+22.1%</td>
+                                    <td>Emerging</td>
+                                </tr>
+                                <tr>
+                                    <td>Renewable Energy Ops</td>
+                                    <td>Ahmedabad</td>
+                                    <td>$25,000,000</td>
+                                    <td>$6,500 / mo</td>
+                                    <td class="trend-up">+15.8%</td>
+                                    <td>High Priority</td>
+                                </tr>
+                                <tr>
+                                    <td>Retail E-commerce Routing</td>
+                                    <td>Gurugram</td>
+                                    <td>$8,500,000</td>
+                                    <td>$35,000 / mo</td>
+                                    <td class="trend-down">-1.5%</td>
+                                    <td>Review Needed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- ---------------------------------------------------------------------
+             VIEW: INSIGHTS & REPORTS
+             --------------------------------------------------------------------- -->
+        <article id="view-insights" class="view-layer">
+            <section class="section-padding bg-white">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Market Insights & Reports</h2>
+                        <p>Authoritative analysis on administrative frameworks, technical localization, and capital efficiency.</p>
+                    </div>
+
+                    <div class="grid grid-cols-3">
+                        
+                        <!-- Insight 1 -->
+                        <div class="insight-card">
+                            <div class="insight-visual" style="background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);">
+                                <!-- Abstract SVG representation -->
+                                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            </div>
+                            <div class="insight-content">
+                                <div class="insight-meta"><span>Technical Report</span><span>Q2 2026</span></div>
+                                <h3 class="insight-title">Architecting for the Digital Personal Data Protection Act</h3>
+                                <p class="insight-excerpt">An exhaustive guide on routing, storing, and computing financial data strictly within the physical borders of the Indian subcontinent utilizing AWS availability zones.</p>
+                                <a href="#" class="insight-link">Read Full Report →</a>
+                            </div>
+                        </div>
+
+                        <!-- Insight 2 -->
+                        <div class="insight-card">
+                            <div class="insight-visual" style="background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);">
+                                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            </div>
+                            <div class="insight-content">
+                                <div class="insight-meta"><span>Market Analysis</span><span>Q1 2026</span></div>
+                                <h3 class="insight-title">Tier-2 Economic Corridors: The New Frontier</h3>
+                                <p class="insight-excerpt">Evaluating the logistical viability, talent acquisition metrics, and state-level tax incentives of expanding operations beyond Mumbai and Bengaluru.</p>
+                                <a href="#" class="insight-link">Read Full Report →</a>
+                            </div>
+                        </div>
+
+                        <!-- Insight 3 -->
+                        <div class="insight-card">
+                            <div class="insight-visual" style="background: linear-gradient(135deg, #f0a500 0%, #c28500 100%);">
+                                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                            </div>
+                            <div class="insight-content">
+                                <div class="insight-meta"><span>Financial Strategy</span><span>Annual</span></div>
+                                <h3 class="insight-title">Capital Repatriation and Tax Efficiency Models</h3>
+                                <p class="insight-excerpt">Statistical modeling of multi-decade subsidiary structures to optimize cash flow returns to foreign parent entities under the latest tax regimes.</p>
+                                <a href="#" class="insight-link">Read Full Report →</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- ---------------------------------------------------------------------
+             VIEW: GLOBAL LOCATIONS & CONTACT
+             --------------------------------------------------------------------- -->
+        <article id="view-locations" class="view-layer">
+            
+            <section class="section-padding bg-white border-bottom">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Global Presence, Local Execution</h2>
+                        <p>Our network of strategically positioned offices ensures seamless communication with both international clients and domestic regulatory authorities.</p>
+                    </div>
+
+                    <div class="grid grid-cols-3">
+                        <!-- Location 1 -->
+                        <div class="location-card">
+                            <h3 class="location-city">Mumbai</h3>
+                            <span class="location-region">India • Financial HQ</span>
+                            <div class="location-details">
+                                <p>Tower 3, Level 14</p>
+                                <p>Bandra Kurla Complex (BKC)</p>
+                                <p>Maharashtra 400051</p>
+                            </div>
+                            <div class="location-contact">
+                                <p>T: +91 22 6000 7000</p>
+                                <p>E: mumbai@strategicadvisory.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Location 2 -->
+                        <div class="location-card">
+                            <h3 class="location-city">New Delhi</h3>
+                            <span class="location-region">India • Regulatory Hub</span>
+                            <div class="location-details">
+                                <p>Statesman House, 9th Floor</p>
+                                <p>Barakhamba Road, Connaught Place</p>
+                                <p>New Delhi 110001</p>
+                            </div>
+                            <div class="location-contact">
+                                <p>T: +91 11 4000 5000</p>
+                                <p>E: delhi@strategicadvisory.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Location 3 -->
+                        <div class="location-card">
+                            <h3 class="location-city">Bengaluru</h3>
+                            <span class="location-region">India • Technical Ops</span>
+                            <div class="location-details">
+                                <p>UB City, Concorde Tower</p>
+                                <p>Vittal Mallya Road</p>
+                                <p>Karnataka 560001</p>
+                            </div>
+                            <div class="location-contact">
+                                <p>T: +91 80 3000 2000</p>
+                                <p>E: tech@strategicadvisory.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comprehensive Inquiry Form -->
+            <section class="section-padding bg-offwhite">
+                <div class="container container-narrow">
+                    <div class="section-header center">
+                        <h2>Initiate an Engagement</h2>
+                        <p>Provide preliminary details regarding your investment objective, and a senior partner will coordinate an initial structural consultation.</p>
+                    </div>
+                    
+                    <form id="contactForm" onsubmit="event.preventDefault(); alert('Enterprise Inquiry Submitted Successfully. A Partner will be in touch within 24 hours.');" style="background: var(--color-bg-white); padding: var(--space-8); border: 1px solid var(--color-border-light); box-shadow: var(--shadow-md);">
+                        <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                            <div class="form-group col-span-2">
+                                <label class="form-label">Corporate Entity Name</label>
+                                <input type="text" class="form-control" required placeholder="e.g. Global Logistics Corp">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contact Person</label>
+                                <input type="text" class="form-control" required placeholder="Full Name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Corporate Email</label>
+                                <input type="email" class="form-control" required placeholder="name@company.com">
+                            </div>
+                            <div class="form-group col-span-2">
+                                <label class="form-label">Primary Objective Area</label>
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Select an area of expertise...</option>
+                                    <option value="entry">Market Entry / Subsidiary Structuring</option>
+                                    <option value="tech">Technical Infrastructure / Cloud Localization</option>
+                                    <option value="finance">Financial Modeling / Data Analysis</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-span-2">
+                                <label class="form-label">Executive Summary</label>
+                                <textarea class="form-control" required placeholder="Briefly describe your capital deployment goals, technical requirements, or administrative hurdles..."></textarea>
+                            </div>
+                            <div class="col-span-2" style="margin-top: var(--space-4);">
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </article>
+
+    </main>
+
+    <!-- =========================================================================
+         ENTERPRISE FOOTER
+         ========================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="grid grid-cols-4">
+                <div class="col-span-4" style="margin-bottom: var(--space-8);">
+                    <div class="footer-logo">Strategic Advisory Partners.</div>
+                    <p style="color: var(--color-text-light); max-width: 600px; font-size: 1rem;">Architecting sustainable, legally robust, and technically secure operational footprints for foreign capital within the Indian subcontinent.</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Divisions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-trigger" data-target="expertise">Administrative Strategy</a></li>
+                        <li><a href="#" class="nav-trigger" data-target="expertise">Technical Architecture</a></li>
+                        <li><a href="#" class="nav-trigger" data-target="expertise">Financial Modeling</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Corporate</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-trigger" data-target="heritage">Our Heritage</a></li>
+                        <li><a href="#" class="nav-trigger" data-target="heritage">Leadership</a></li>
+                        <li><a href="#" class="nav-trigger" data-target="locations">Global Offices</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Intelligence</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-trigger" data-target="insights">Market Reports</a></li>
+                        <li><a href="#" class="nav-trigger" data-target="data">Financial Data Center</a></li>
+                        <li><a href="#">Regulatory Updates</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Client Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Secure Client Portal</a></li>
+                        <li><a href="#">Download iOS App</a></li>
+                        <li><a href="#">Download Android App</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>&copy; 2026 Strategic Advisory Partners Ltd. All Rights Reserved.</div>
+                <div style="display: flex; gap: var(--space-4);">
+                    <a href="#" style="color: var(--color-text-light);">Privacy Policy</a>
+                    <a href="#" style="color: var(--color-text-light);">Terms of Service</a>
+                    <a href="#" style="color: var(--color-text-light);">Cookie Notice</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+         JAVASCRIPT ENGINE (ROUTER, ANIMATIONS, TABLE LOGIC)
+         ========================================================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // -------------------------------------------------------------------
+            // 1. SPA Router Engine
+            // -------------------------------------------------------------------
+            const navigateTo = (targetId) => {
+                // Remove active classes from all views
+                document.querySelectorAll('.view-layer').forEach(view => {
+                    view.classList.remove('active');
+                });
+                
+                // Remove active classes from all nav links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Activate target view
+                const selectedView = document.getElementById(`view-${targetId}`);
+                if (selectedView) {
+                    selectedView.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+
+                // Highlight corresponding nav link in header
+                const activeNavLink = document.querySelector(`.nav-link[data-target="${targetId}"]`);
+                if (activeNavLink) {
+                    activeNavLink.classList.add('active');
+                }
+
+                // Re-trigger scroll animations for the new view
+                setTimeout(initializeScrollAnimations, 100);
+            };
+
+            // Attach event listeners to all routing triggers
+            document.querySelectorAll('.nav-trigger, .nav-link').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = trigger.getAttribute('data-target');
+                    if (target) {
+                        navigateTo(target);
+                    }
+                });
+            });
+
+            // -------------------------------------------------------------------
+            // 2. Scroll Interaction Observer
+            // -------------------------------------------------------------------
+            const initializeScrollAnimations = () => {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.15
+                };
+
+                const scrollObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target); // Only animate once
+                        }
+                    });
+                }, observerOptions);
+
+                // Target elements inside the active view
+                const activeView = document.querySelector('.view-layer.active');
+                if(activeView) {
+                    const animatableElements = activeView.querySelectorAll('.animate-on-scroll:not(.is-visible)');
+                    animatableElements.forEach(el => scrollObserver.observe(el));
+                }
+            };
+
+            // Initial call for the home page
+            initializeScrollAnimations();
+
+            // -------------------------------------------------------------------
+            // 3. Header Shrink on Scroll
+            // -------------------------------------------------------------------
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+            
+            // -------------------------------------------------------------------
+            // 4. Data Center Table Sorting Logic
+            // -------------------------------------------------------------------
+            // Attach this globally so inline onclick="sortTable(n)" works
+            window.sortTable = function(n) {
+                var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                table = document.getElementById("financialTable");
+                switching = true;
+                // Set the sorting direction to ascending:
+                dir = "asc"; 
+                
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    // Loop through all table rows (except the first, which contains table headers):
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        
+                        x = rows[i].getElementsByTagName("TD")[n];
+                        y = rows[i + 1].getElementsByTagName("TD")[n];
+                        
+                        // Extract text for comparison. Handle numeric values if dollar signs/percentages are present.
+                        let valX = x.innerHTML.toLowerCase().replace(/[\$,%]/g, '');
+                        let valY = y.innerHTML.toLowerCase().replace(/[\$,%]/g, '');
+                        
+                        let numX = parseFloat(valX);
+                        let numY = parseFloat(valY);
+                        
+                        if (!isNaN(numX) && !isNaN(numY)) {
+                            // Numeric comparison
+                            if (dir == "asc") {
+                                if (numX > numY) { shouldSwitch = true; break; }
+                            } else if (dir == "desc") {
+                                if (numX < numY) { shouldSwitch = true; break; }
+                            }
+                        } else {
+                            // String comparison
+                            if (dir == "asc") {
+                                if (valX > valY) { shouldSwitch = true; break; }
+                            } else if (dir == "desc") {
+                                if (valX < valY) { shouldSwitch = true; break; }
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        // If a switch has been marked, make the switch and mark that a switch has been done:
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        switchcount ++;      
+                    } else {
+                        // If no switching has been done AND the direction is "asc", set the direction to "desc" and run the while loop again.
+                        if (switchcount == 0 && dir == "asc") {
+                            dir = "desc";
+                            switching = true;
+                        }
+                    }
+                }
+            };
+
+        });
+    </script>
+</body>
+</html>
